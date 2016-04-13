@@ -1,11 +1,13 @@
 import {Component, OnInit} from 'angular2/core';
 import {Product} from './product';
 import {ProductService} from './product.service';
+
 @Component({
     selector: 'sidebar-list',
     templateUrl: 'app/sidebar.list.html'
 })
-export class SidebarComponent{
+
+export class SidebarComponent implements OnInit{
     constructor(private _productService: ProductService){}
     products: Product[];
     errorMessage: String;

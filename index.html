@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Angular 2 QuickStart</title>
+    <title>Products</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
@@ -56,7 +56,31 @@
             (text.indexOf(valThis) == 0) ? $(this).show() : $(this).hide();
        });
     });
+      $('body').prepend('<a href="#" class="back-to-top">Back to Top</a>');
+      var amountScrolled = 240;
+
+      $(window).scroll(function() {
+        if ( $(window).scrollTop() > amountScrolled ) {
+          $('a.back-to-top').fadeIn('slow');
+        } else {
+          $('a.back-to-top').fadeOut('slow');
+        }
+      });
+      $('a.back-to-top').click(function() {
+        $('html, body').animate({
+          scrollTop: 0
+        }, 700);
+        return false;
+      });
 });
+  function toggleChevron(e) {
+      $(e.target)
+          .prev('.panel-heading')
+          .find("i.indicator")
+          .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+  }
+  $('#accordion').on('hidden.bs.collapse', toggleChevron);
+  $('#accordion').on('shown.bs.collapse', toggleChevron);
 
   </script>
 </html>
