@@ -1,0 +1,8 @@
+<div class="sidebar-container">
+    <span class="search-group"><input  id="search-bar" type="text" placeholder="Search"><button class="btn btn-primary">Search</button></span>
+    <div class="product-dropdown-list">
+        <ul id="product-dropdown">
+            <li *ngFor = "#product of products">{{product.title}}</li>
+        </ul>
+    </div>
+</div>
