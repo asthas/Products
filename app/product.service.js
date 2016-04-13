@@ -29,18 +29,26 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                     this.http = http;
                 }
                 ProductService.prototype.getProducts = function () {
+                    var _this = this;
                     return this.http.get('/adurcup')
                         .map(function (res) { return res.json().products; })
                         .map(function (products) {
                         return products.map(function (product) {
                             //reassign image_src
-                            product.image_src =
-                                product.image_src
-                                    .map(function (img) { return ("http://www.adurcup.com/images/product/" + img); });
+                            product.image_src = product.image_src
+                                .map(function (img) { return ("http://www.adurcup.com/images/product/" + img); });
                             return product;
                         });
                     })
+                        .do(function (products) {
+                        //store data in the service itself
+                        _this.store = products;
+                    })
                         .catch(function (err) { return Observable_1.Observable.throw(err); });
+                };
+                ProductService.prototype.searchProducts = function (term) {
+                    return Observable_1.Observable.of(this.store
+                        .filter(function (product) { return product.title.toLowerCase().indexOf(term.toLowerCase()) !== -1; }));
                 };
                 ProductService.prototype.handleError = function (error) {
                     return Observable_1.Observable.throw(error.json().error || 'Server error');

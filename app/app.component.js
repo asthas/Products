@@ -32,8 +32,24 @@ System.register(['angular2/core', 'angular2/http', './product.service', './produ
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent() {
+                function AppComponent(_productService) {
+                    this._productService = _productService;
                 }
+                AppComponent.prototype.ngOnInit = function () {
+                    this.getProducts();
+                };
+                AppComponent.prototype.getProducts = function () {
+                    var _this = this;
+                    this._productService.getProducts()
+                        .subscribe(function (products) { return _this.products = products; }, function (error) { return _this.errorMessage = error; });
+                };
+                AppComponent.prototype.search = function () {
+                    var self = this;
+                    return function (term) {
+                        self._productService.searchProducts(term)
+                            .subscribe(function (products) { return self.products = products; });
+                    };
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
@@ -45,7 +61,7 @@ System.register(['angular2/core', 'angular2/http', './product.service', './produ
                             product_service_1.ProductService,
                         ]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [product_service_1.ProductService])
                 ], AppComponent);
                 return AppComponent;
             }());

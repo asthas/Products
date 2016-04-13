@@ -14,6 +14,7 @@ body{
     margin-top: 98px;
     overflow-y: hidden;
     position: absolute;
+    background: rgba(0,0,0, 0.5);
 }
 .card-container{
     float: right;
@@ -91,13 +92,15 @@ body{
     vertical-align: middle;
     padding-top: 22px;
 }
-
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover{
+    color: #eee;
+}
 .navbar-right>li{
     margin: 20px 20px 20px 0px;
 }
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
     height:100%;
-    color: #555;
+    color: #eee;
     font-size: 16px;
     background-color: #26A69A;
     -moz-box-shadow:    inset 0 0 10px #00796B;
@@ -122,7 +125,7 @@ body{
     margin-right: 6px;
     height: 36px;
     border-radius: 2px;
-    width: 66%;
+    width: 92%;
     padding: 4px;
 }
 
@@ -145,7 +148,7 @@ body{
     text-align: center;
 }
 #product-dropdown{
-
+    display: none;
 }
 
 a.back-to-top {
@@ -162,3 +165,42 @@ a.back-to-top {
     -moz-border-radius: 30px;
     border-radius: 30px;
 }
+.product-filter{
+    width: 92%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.filter-head{
+    background-color: #FFC107;
+    text-align: center;
+    padding:4px 0;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    color: #fff;
+    opaciity: 0.6;
+    letter-spacing: 1px;
+}
+.panel-title>a{
+    text-decoration: none;
+}
+.panel-default>.panel-heading {
+    color: #fff;
+    background-color: #337AB7;
+    border: 1px solid transparent;
+}
+
+.checkbox-elem{
+    display: block;
+    color: #333;
+}
+
+@media screen and (max-width: 1000px){
+    .sidebar-container{
+        width: 35%;
+    }
+
+    .card-container{
+        width: 50%;
+    }
+}
+

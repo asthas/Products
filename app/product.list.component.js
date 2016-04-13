@@ -1,4 +1,4 @@
-System.register(['angular2/core', './product.service'], function(exports_1, context_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,35 +10,27 @@ System.register(['angular2/core', './product.service'], function(exports_1, cont
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, product_service_1;
+    var core_1;
     var ProductListComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (product_service_1_1) {
-                product_service_1 = product_service_1_1;
             }],
         execute: function() {
             ProductListComponent = (function () {
-                function ProductListComponent(_productService) {
-                    this._productService = _productService;
+                function ProductListComponent() {
                 }
-                ProductListComponent.prototype.ngOnInit = function () {
-                    this.getProducts();
-                };
-                ProductListComponent.prototype.getProducts = function () {
-                    var _this = this;
-                    this._productService.getProducts()
-                        .subscribe(function (products) { return _this.products = products; }, function (error) { return _this.errorMessage = error; });
-                };
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Array)
+                ], ProductListComponent.prototype, "products", void 0);
                 ProductListComponent = __decorate([
                     core_1.Component({
                         selector: 'product-list',
                         templateUrl: 'app/product.list.html'
                     }), 
-                    __metadata('design:paramtypes', [product_service_1.ProductService])
+                    __metadata('design:paramtypes', [])
                 ], ProductListComponent);
                 return ProductListComponent;
             }());
